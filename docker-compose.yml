@@ -29,3 +29,12 @@ services:
       - "${PWD}/postgres-sakila-db/postgres-sakila-insert-data.sql:/docker-entrypoint-initdb.d/2.data.sql"
     ports:
       - 55432:5432
+  openguass:
+    image: enmotech/opengauss
+    environment:
+      - POSTGRES_PASSWORD=Hello1234
+    volumes:
+      - "${PWD}/postgres-sakila-db/postgres-sakila-schema.sql:/docker-entrypoint-initdb.d/1.struct.sql"
+      - "${PWD}/postgres-sakila-db/postgres-sakila-insert-data.sql:/docker-entrypoint-initdb.d/2.data.sql"
+    ports:
+      - 45432:5432
